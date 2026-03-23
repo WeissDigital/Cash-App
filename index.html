@@ -31,7 +31,25 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
 /* STATUS BAR */
 .status-bar{display:flex;justify-content:space-between;align-items:center;padding:15px 24px 0;flex-shrink:0;position:relative;height:52px;cursor:pointer;}
 .s-time{font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.2px;}
-.island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:118px;height:34px;background:#111;border-radius:20px;}
+.island{
+  position:absolute;
+  left:50%;
+  top:10px;
+  transform:translateX(-50%);
+  width:118px;
+  height:34px;
+  background:#000;
+  border-radius:20px;
+  z-index:10;
+
+  /* главный эффект */
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 6px 20px rgba(255,255,255,0.08),
+    0 10px 30px rgba(255,255,255,0.04);
+}
+
+
 .s-right{display:flex;align-items:center;gap:5px;}
 
 /* SCREENS */
@@ -299,10 +317,19 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
   display: none;
 }
 
+#s-wifi{
+  flex-shrink:0;
+  display:block;
+}
+
+.status svg{
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
 <div class="phone" id="phone">
+
 
 <!-- STATUS BAR -->
 <div class="status-bar" id="status-bar">
@@ -315,11 +342,12 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
       <rect x="10" y="2.5" width="3" height="10.5" rx="1" fill="white"/>
       <rect x="15" y="0" width="3" height="13" rx="1" fill="white" opacity="0.3"/>
     </svg>
-    <svg id="s-wifi" width="16" height="13" viewBox="0 0 16 13" fill="none">
-      <path d="M8 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/>
-      <path d="M3.6 7.3a6.2 6.2 0 0 1 8.8 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M1 4.3a10.6 10.6 0 0 1 14 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+<svg id="s-wifi" width="16" height="13" viewBox="0 0 16 13" fill="none">
+  <path d="M8 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/>
+  <path d="M5.8 9.5a3.5 3.5 0 0 1 4.4 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M3.6 7.3a6.2 6.2 0 0 1 8.8 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M1 4.3a10.6 10.6 0 0 1 14 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
     <svg id="s-bat" width="28" height="13" viewBox="0 0 28 13" fill="none">
       <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="white" stroke-opacity="0.4"/>
       <rect id="bat-fill" x="2" y="2" width="19" height="9" rx="2.5" fill="white"/>
@@ -635,15 +663,15 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
 <div class="cheat-menu" id="cheat-menu">
   <div class="cheat-box">
     <div class="cheat-ico">💸</div>
-    <div class="cheat-title">Money Generator</div>
-    <div class="cheat-sub">Held balance 5 seconds — welcome, hacker 🔓</div>
+    <div class="cheat-title">Weiss welcomes you</div>
+    <div class="cheat-sub">Held balance 5 seconds — menu opening</div>
     <div class="cheat-grid">
       <button class="cheat-btn" onclick="addMoney(10)">+ $10</button>
       <button class="cheat-btn" onclick="addMoney(50)">+ $50</button>
       <button class="cheat-btn" onclick="addMoney(100)">+ $100</button>
       <button class="cheat-btn" onclick="addMoney(500)">+ $500</button>
-      <button class="cheat-btn big" onclick="addMoney(1000)">+ $1,000 🔥</button>
-      <button class="cheat-btn big" onclick="addMoney(10000)">+ $10,000 💎</button>
+      <button class="cheat-btn big" onclick="addMoney(1000)">+ $1,000 </button>
+      <button class="cheat-btn big" onclick="addMoney(10000)">+ $10,000 </button>
     </div>
     <div class="cheat-row">
       <input class="cheat-inp" id="custom-amt" type="number" placeholder="Custom amount..."/>
