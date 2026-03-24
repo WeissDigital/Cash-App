@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.2, maximum-scale=1.2, user-scalable=no">
 <meta name="theme-color" content="#00d632">
 <title>Cash App</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,10 +25,10 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
   overflow: hidden;
   position: relative;
   box-shadow: 
-  0 0 0 1px #000,
-  0 0 0 10px #000,
-  0 0 0 11px #000,
-  0 30px 80px rgba(0,0,0,0.95);
+  0 0 0 1px rgba(255,255,255,0.09),  /* 👈 белая линия */
+  0 0 0 10px #1a1a1a,               /* 👈 корпус */
+  0 0 0 11px #2a2a2a,               /* 👈 внешняя рамка */
+  0 30px 80px rgba(0,0,0,0.95); 
   display: flex;
   flex-direction: column;
 }
@@ -304,7 +304,7 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
 /* === ADDED: iPhone home indicator === */
 .iphone-home-indicator {
   position: absolute !important;
-  bottom: 8px !important;
+  bottom: 11px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 160px;
