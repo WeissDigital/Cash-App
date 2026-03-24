@@ -1,6 +1,6 @@
 {
   "name": "Cash App",
-  "short_name": "CashClone",
+  "short_name": "Cash App",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0d0d0d",
