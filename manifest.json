@@ -1,9 +1,10 @@
 {
   "name": "Cash App",
-  "short_name": "CashApp",
+  "short_name": "Cash App",
   "start_url": "./",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
   "background_color": "#0d0d0d",
   "theme_color": "#00d632",
   "orientation": "portrait",
