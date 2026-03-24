@@ -331,14 +331,24 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
   display:block;
 }
 
-.status svg{
-  flex-shrink:0;
+.status-bar{
+  padding:15px 14px 0;
 }
 
-#s-time{
-  position: relative;
-  left: -20px;
+.s-time{
+  font-size:13px;
 }
+
+#s-signal,
+#s-wifi,
+#s-bat{
+  transform: scale(0.85);
+}
+
+.s-right{
+  gap:3px;
+}
+
 
 </style>
 
