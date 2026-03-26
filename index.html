@@ -226,7 +226,12 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
 .suc-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;}
 .suc-ic{width:20px;height:20px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;}
 .suc-rl{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
-.suc-rs{font-size:13px;color:#555;font-weight:600;}
+.suc-rs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
 .suc-bottom{padding:14px 22px 30px;}
 .suc-done{width:100%;height:52px;background:var(--green);border:none;border-radius:16px;color:#000;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;}
 
@@ -242,8 +247,13 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
 .prof-meta{font-size:13px;color:#555;font-weight:600;margin-bottom:6px;}
 .prof-amt{font-size:40px;font-weight:900;color:#fff;letter-spacing:-2px;margin:16px 0 4px;}
 .prof-sec{font-size:11px;font-weight:800;color:#555;letter-spacing:0.5px;margin:18px 0 8px;text-transform:uppercase;}
-.prof-dr{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #181818;}
-.prof-dr:last-child{border:none;}
+.prof-dr{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:none;
+}
 .prof-dic{width:18px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;}
 .prof-dl{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
 .prof-ds{font-size:13px;color:#444;font-weight:600;}
@@ -327,6 +337,7 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
   display: none;
 }
 
+
 #s-wifi{
   flex-shrink:0;
   display:block;
@@ -361,6 +372,20 @@ body{background:#111;display:flex;justify-content:center;align-items:center;min-
   display:flex;
   align-items:center;
   gap:3px;
+}
+
+#sc-suc .suc-row .suc-ic svg * {
+  stroke: #f5f5f5 !important;
+  fill: #f5f5f5 !important;
+}
+
+.suc-sec-title{
+  border-top:1px solid #181818;
+
+  margin-top:14px;   /* расстояние СВЕРХУ от линии */
+  padding-top:19px;   /* расстояние от линии до текста */
+
+  margin-bottom:18px; /* ВОТ ЭТО — больше отступ СНИЗУ */
 }
 
 </style>
@@ -628,6 +653,10 @@ if ('serviceWorker' in navigator) {
     <div class="act-hdr">Activity</div>
     <div class="tx-list" id="tx-list"></div>
   </div>
+<div style="display:flex;justify-content:space-between;align-items:center;">
+  <div># 123456789</div>
+  <div style="font-size:12px;opacity:0.6;">Copy</div>
+</div>
   <div class="tab-bar">
     <div class="tab" onmousedown="startHold()" onmouseup="cancelHold()" onmouseleave="cancelHold()" ontouchstart="startHold()" ontouchend="cancelHold()">
       <span class="tab-bal" id="tb3">$0</span>
@@ -656,7 +685,12 @@ if ('serviceWorker' in navigator) {
     </div>
     <div class="suc-row">
       <div class="suc-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#555" stroke-width="1.4"/><line x1="1" y1="7" x2="15" y2="7" stroke="#555" stroke-width="1.2"/></svg></div>
-      <div><div class="suc-rl">Payment between</div><div class="suc-rs" id="suc-between">To: Someone · From: Balance</div></div>
+      <div><div class="suc-rl">Payment between</div><div class="suc-rs" id="suc-between" style="display:block !important;">
+  <div style="display:block !important;font-size:12px;opacity:0.5;">to</div>
+  <div style="display:block !important;font-size:16px;">Someone</div>
+</div>
+
+</div>
     </div>
     <div class="suc-row">
       <div class="suc-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="1" x2="8" y2="15" stroke="#555" stroke-width="1.8" stroke-linecap="round"/><path d="M11 4H6a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H4" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg></div>
@@ -682,12 +716,104 @@ if ('serviceWorker' in navigator) {
     <div class="prof-name" id="prof-name">Alex Johnson</div>
     <div class="prof-meta" id="prof-meta">$alexj · For OC</div>
     <div class="prof-amt" id="prof-amt">$10,000.00</div>
-    <div class="prof-sec">Transaction details</div>
-    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#00d632" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="prof-dl">Complete</div><div class="prof-ds">Payment sent successfully</div></div></div>
-    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#555" stroke-width="1.4"/><line x1="1" y1="7" x2="15" y2="7" stroke="#555" stroke-width="1.1"/></svg></div><div><div class="prof-dl">Payment between</div><div class="prof-ds" id="prof-between">To: Alex Johnson · Cash balance</div></div></div>
-    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="1" x2="8" y2="15" stroke="#555" stroke-width="1.8" stroke-linecap="round"/><path d="M11 4H6a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H4" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="prof-dl">Payment source</div><div class="prof-ds">Cash balance</div></div></div>
-    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#555" stroke-width="1.4"/></svg></div><div><div class="prof-dl">Fees</div><div class="prof-ds">None applied</div></div></div>
-    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" stroke="#555" stroke-width="1.4"/><line x1="2" y1="8" x2="14" y2="8" stroke="#555"/><line x1="8" y1="2" x2="8" y2="14" stroke="#555"/></svg></div><div><div class="prof-dl">Transaction number</div><div class="prof-ds" id="prof-txid">TX123...</div></div></div>
+    <div class="suc-sec-title" style="
+  font-size:19px;
+  font-weight:800;
+  color:#ffffff;
+">
+  Transaction details
+</div>
+    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#ffffff"stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="prof-dl">Complete</div><div class="prof-ds">Payment sent successfully</div></div></div>
+    <div class="prof-dr">
+  
+  <div class="prof-dic">
+    <img src="https://raw.githubusercontent.com/WeissDigital/Cash-App/main/User-Single.png"
+         width="16"
+         height="16"
+         style="filter:invert(1);">
+  </div>
+
+  <div>
+    <div class="prof-dl">Payment between</div>
+    <div class="prof-ds" id="prof-between">To: Alex Johnson · Cash balance</div>
+  </div>
+
+</div>
+
+    <div class="prof-dr"><div class="prof-dic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="1" x2="8" y2="15" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/><path d="M11 4H6a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H4" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="prof-dl">Payment source</div><div class="prof-ds">Cash balance</div></div></div>
+<div class="prof-dr" style="display:flex;align-items:center;justify-content:space-between;">
+  
+  <div style="display:flex;align-items:center;gap:12px;">
+    
+    <div class="prof-dic">
+      <img src="https://raw.githubusercontent.com/WeissDigital/Cash-App/main/noaxe.png"
+           width="16"
+           height="16"
+           style="filter:invert(1);">
+    </div>
+
+    <div>
+      <div class="prof-dl">Fees</div>
+      <div class="prof-ds">None applied</div>
+    </div>
+
+  </div>
+
+  <!-- ИКОНКА СПРАВА -->
+  <button style="
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+  ">
+    <img src="https://raw.githubusercontent.com/WeissDigital/Cash-App/main/circle-alert.png"
+         width="18"
+         height="18"
+         style="opacity:0.9;filter:invert(1);">
+  </button>
+
+</div>
+
+
+  <div class="prof-dr" style="display:flex;align-items:center;justify-content:space-between;">
+  
+  <div style="display:flex;align-items:center;gap:12px;">
+    
+    <div class="prof-dic">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"> 
+        <path d="M9 3L7 21M17 3l-2 18M3 9h18M3 15h18"
+          stroke="#ffffff"
+          stroke-width="3"
+          stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div>
+      <div class="prof-dl">Transaction number</div>
+      <div class="prof-ds" id="prof-txid">TX123...</div>
+    </div>
+
+  </div>
+
+  <!-- ИКОНКА СПРАВА -->
+  <button onclick="copyTx()" style="
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+  ">
+    <img src="https://raw.githubusercontent.com/WeissDigital/Cash-App/main/copyalert.png"
+         width="18"
+         height="18"
+         style="filter:invert(1);">
+  </button>
+
+</div>
+
     <div style="height:28px;"></div>
   </div>
 </div>
@@ -841,7 +967,10 @@ function execPay(){
     txs.unshift({id:txid,name:to,note:note,amt:-v,date:'Just now',col:'#'+Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0'),ini:to.slice(0,2).toUpperCase(),time:''+to.toLowerCase().replace(/\s/g,''),ts:Date.now()});
     updBal();amtStr='';document.getElementById('np-disp').textContent='$0';
     document.getElementById('suc-title').textContent='You sent '+fmtFull(v)+' to '+to;
-    document.getElementById('suc-between').textContent='To: '+to+' · From: Balance';
+    document.getElementById('suc-between').innerHTML = `
+  <div style="font-size:12px;opacity:0.5;">to</div>
+  <div style="font-size:16px;">${to}</div>
+`;
     document.getElementById('suc-txid').textContent=txid+'...';
     showScreen('sc-suc');
   }, 1800);
